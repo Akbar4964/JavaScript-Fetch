@@ -4,7 +4,7 @@ const API = {
   posts: BASE_URL + "/posts?limit=5",
   comments: BASE_URL + "/comments",
   users: BASE_URL + "/users",
-  // albums: BASE_URL + "/albums",
+  albums: BASE_URL + "/albums",
   photos: BASE_URL + "/photos",
   todos: BASE_URL + "/todos",
 };
