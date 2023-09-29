@@ -9,7 +9,7 @@ const API = {
   todos: BASE_URL + "/todos",
 };
 
-let col = document.querySelector("#content");
+// let col = document.querySelector("#content");
 let html = "";
 
 const getPosts = async () => {
