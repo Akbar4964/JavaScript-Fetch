@@ -10,7 +10,7 @@ const API = {
 };
 
 let col = document.querySelector("#content");
-let html = "";
+// let html = "";
 
 const getPosts = async () => {
   await fetch(API.posts)
