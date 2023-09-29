@@ -18,7 +18,7 @@ const getPosts = async () => {
     .then((data) => innerPosts(data))
     .catch((err) => console.log(err));
 };
-getPosts();
+// getPosts();
 
 function innerPosts(data) {
   data.map((post) => {
