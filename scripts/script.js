@@ -10,6 +10,7 @@ const API = {
 };
 
 let col = document.querySelector("#content");
+
 let html = "";
 
 const getPosts = async () => {
