@@ -1,6 +1,6 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 
-// const API = {
+const API = {
   posts: BASE_URL + "/posts?limit=5",
   comments: BASE_URL + "/comments",
   users: BASE_URL + "/users",
