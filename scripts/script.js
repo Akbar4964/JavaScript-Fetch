@@ -15,7 +15,7 @@ let html = "";
 const getPosts = async () => {
   await fetch(API.posts)
     .then((res) => res.json())
-    .then((data) => innerPosts(data))
+    // .then((data) => innerPosts(data))
     .catch((err) => console.log(err));
 };
 getPosts();
