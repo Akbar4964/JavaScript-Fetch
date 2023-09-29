@@ -20,7 +20,7 @@ const getPosts = async () => {
 };
 getPosts();
 
-// function innerPosts(data) {
+function innerPosts(data) {
   data.map((post) => {
     html += `
   <div class="cards">
