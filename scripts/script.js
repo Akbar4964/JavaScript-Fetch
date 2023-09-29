@@ -7,7 +7,7 @@ const API = {
   albums: BASE_URL + "/albums",
   photos: BASE_URL + "/photos",
   todos: BASE_URL + "/todos",
-};
+// };
 
 let col = document.querySelector("#content");
 let html = "";
