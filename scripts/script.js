@@ -6,7 +6,7 @@ const API = {
   users: BASE_URL + "/users",
   albums: BASE_URL + "/albums",
   photos: BASE_URL + "/photos",
-  // todos: BASE_URL + "/todos",
+  todos: BASE_URL + "/todos",
 };
 
 let col = document.querySelector("#content");
