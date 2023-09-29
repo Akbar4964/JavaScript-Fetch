@@ -12,7 +12,7 @@ const API = {
 let col = document.querySelector("#content");
 let html = "";
 
-const getPosts = async () => {
+// const getPosts = async () => {
   await fetch(API.posts)
     .then((res) => res.json())
     .then((data) => innerPosts(data))
