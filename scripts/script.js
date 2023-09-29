@@ -2,7 +2,7 @@ const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 const API = {
   posts: BASE_URL + "/posts?limit=5",
-  // comments: BASE_URL + "/comments",
+  comments: BASE_URL + "/comments",
   users: BASE_URL + "/users",
   albums: BASE_URL + "/albums",
   photos: BASE_URL + "/photos",
