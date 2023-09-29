@@ -34,9 +34,9 @@ function innerPosts(data) {
   </div>
     `;
   });
-  content.innerHTML = html;
-  html = "";
-}
+//   content.innerHTML = html;
+//   html = "";
+// }
 // const elTemplate = document.querySelector("#template").content;
 
 // function innerPosts(data) {
