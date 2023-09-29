@@ -5,7 +5,7 @@ const API = {
   comments: BASE_URL + "/comments",
   users: BASE_URL + "/users",
   albums: BASE_URL + "/albums",
-  photos: BASE_URL + "/photos",
+  // photos: BASE_URL + "/photos",
   todos: BASE_URL + "/todos",
 };
 
