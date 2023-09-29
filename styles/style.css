@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cards {
+  width: 300px;
+  height: 400px;
+  border: 3px solid steelblue;
+  text-align: justify;
+  padding: 15px;
+  margin: 10px 20px;
+  border-radius: 15px;
+}
+
+.card-id {
+  font-weight: 900;
+  color: tomato;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  color: teal;
+}
+
+.card-text {
+  margin-top: 20px;
+  font-weight: 300;
+  color: orange;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-phone {
+  color: blue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  margin-top: 7px;
+}
