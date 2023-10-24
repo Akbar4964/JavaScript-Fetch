@@ -1,7 +1,9 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 const API = {
-  posts: BASE_URL + "/posts?limit=5",
+  posts: BASE_URL + "/posts",
+  userPosts: BASE_URL + "/posts?userId=",
+  postComments: BASE_URL + "/comments?postId=",
   comments: BASE_URL + "/comments",
   users: BASE_URL + "/users",
   albums: BASE_URL + "/albums",
@@ -9,42 +11,135 @@ const API = {
   todos: BASE_URL + "/todos",
 };
 
-let col = document.querySelector("#content");
+const elTemplate = document.querySelector("#template").content;
 
-let html = "";
+const elTemplateOne = document.querySelector("#template1").content;
 
-const getPosts = async () => {
-  await fetch(API.posts)
-    .then((res) => res.json())
-    .then((data) => innerPosts(data))
-    .catch((err) => console.log(err));
+const elTemplateTwo = document.querySelector("#template2").content;
+
+const elData = document.querySelector(".data");
+
+const elPosts = document.querySelector(".posts");
+
+const elComments = document.querySelector(".comments");
+
+const elClickBtnRow = document.querySelector(".click-btn-row");
+
+const elTable = document.querySelector(".table");
+
+const getUsers = async () => {
+  const elementLoading = document.createElement("div");
+  elData.appendChild(elementLoading);
+  elementLoading.classList.add("loading");
+  elementLoading.textContent = "Please wait...";
+  await fetch(API.users).then((res) =>
+    res
+      .json()
+      .then((data) => {
+        elData.innerHTML = null;
+        renderFunction(data);
+      })
+      .catch((error) => console.log(error))
+  );
 };
-getPosts();
+getUsers();
 
-function innerPosts(data) {
-  data.map((post) => {
-    html += `
-  <div class="cards">
-  <div>
-  <p class="card-id">CardId:${post.id}</p>
-  <p class="card-phone">PhoneNumber:(+998)99${(post.userId =
-    post.id + Math.trunc(Math.random() * 9999999))}</p>
-  <p class="card-title">Name:${(post.title.textContent = "Akbar")}</p>
-  <p class="card-text">About him/her:<br>${post.body}.${post.body}</p>
-  </div>
-  </div>
-    `;
+function renderFunction(data) {
+  console.log(data);
+  const createFragment = document.createDocumentFragment();
+  data.forEach((user) => {
+    createFragment.appendChild(createUsers(user));
   });
-  content.innerHTML = html;
-  html = "";
+  elData.appendChild(createFragment);
 }
-// const elTemplate = document.querySelector("#template").content;
 
-// function innerPosts(data) {
-//   data.map((post) => {
-//     console.log(data);
-//     const element = elTemplate.cloneNode(true);
-//     element.querySelector(".card").textContent = post.title;
-//     return element;
-//   });
-// }
+function createUsers(user) {
+  const element = elTemplate.cloneNode(true);
+  element.querySelector(".user-id").textContent = user.id;
+  element.querySelector(".user-name").textContent = user.name;
+  element.querySelector(".user-post-btn").dataset.id = user.id;
+  return element;
+}
+
+elData.addEventListener("click", (event) => {
+  const id = event.target.dataset.id;
+  if (!!id) {
+    getPosts(id);
+  }
+});
+
+const getPosts = async (userId) => {
+  console.log(userId);
+  const elementLoading = document.createElement("div");
+  elPosts.appendChild(elementLoading);
+  elementLoading.classList.add("loading");
+  elementLoading.textContent = "Please wait...";
+  await fetch(API.userPosts + userId).then((res) =>
+    res
+      .json()
+      .then((data) => {
+        elPosts.innerHTML = null;
+        renderPostFunction(data);
+      })
+      .catch((error) => console.log(error))
+  );
+};
+
+function renderPostFunction(data) {
+  const createFragment = document.createDocumentFragment();
+  data.forEach((post) => {
+    createFragment.appendChild(createPosts(post));
+  });
+  elPosts.innerHTML = null;
+  elPosts.appendChild(createFragment);
+}
+
+function createPosts(post) {
+  const postTitle = post.title.slice(0, 50);
+  const postBody = post.body.slice(0, 50);
+  const element = elTemplateOne.cloneNode(true);
+  element.querySelector(".posts-id").dataset.id = post.id;
+  element.querySelector(".posts-title").textContent = postTitle;
+  element.querySelector(".posts-title").dataset.id = post.id;
+  element.querySelector(".posts-body").textContent = postBody;
+  element.querySelector(".posts-body").dataset.id = post.id;
+  return element;
+}
+
+elPosts.addEventListener("click", (event) => {
+  const id = event.target.dataset.id;
+  if (!!id) {
+    getComments(id);
+  }
+});
+
+const getComments = async (postId) => {
+  const elementLoading = document.createElement("div");
+  elComments.appendChild(elementLoading);
+  elementLoading.classList.add("loading");
+  elementLoading.textContent = "Please wait...";
+  console.log(elementLoading);
+  await fetch(API.postComments + postId).then((res) =>
+    res
+      .json()
+      .then((data) => renderCommentFunction(data))
+      .catch((error) => console.log(error))
+  );
+};
+
+function renderCommentFunction(data) {
+  const createFragment = document.createDocumentFragment();
+  data.forEach((comment) => {
+    createFragment.appendChild(createComments(comment));
+  });
+  elComments.innerHTML = null;
+  elComments.appendChild(createFragment);
+}
+
+function createComments(comment) {
+  const element = elTemplateTwo.cloneNode(true);
+  element.querySelector(".comment-id").dataset.id = comment.id;
+  element.querySelector(".comment-name").textContent = comment.name;
+  element.querySelector(".comment-body").textContent = comment.body;
+  return element;
+}

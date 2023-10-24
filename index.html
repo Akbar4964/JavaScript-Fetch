@@ -7,10 +7,47 @@
     <title>JAVASCRIPT-FETCH</title>
   </head>
   <body>
-    <div id="content"></div>
-    <!-- <template id="template">
-      <h1 class="card"></h1>
-    </template> -->
+    <div class="row">
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th class="thead-name">Name</th>
+                <th>Posts</th>
+              </tr>
+            </thead>
+            <tbody class="data"></tbody>
+          </table>
+        </div>
+        <div class="posts">
+          <img class="boss" src="./assets/img/boss.jpg" alt="" />
+        </div>
+        <div class="comments"></div>
+    </div>
+    <template id="template">
+      <tr>
+        <td class="user-id">1</td>
+        <td class="user-name">Ali</td>
+        <td class="click-btn-row">
+          <button class="user-post-btn">Posts</button>
+        </td>
+      </tr>
+    </template>
+    <template id="template1">
+      <div class="post-item">
+        <p class="posts-id"></p>
+        <p class="posts-title"></p>
+        <p class="posts-body"></p>
+      </div>
+    </template>
+    <template id="template2">
+      <div class="comment-item">
+        <p class="comment-id"></p>
+        <p class="comment-name"></p>
+        <p class="comment-body"></p>
+      </div>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
